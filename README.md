@@ -15,3 +15,6 @@ In this lab, we practice the concepts by creating base and derived classes, and 
 
 ### Lab 5: Templates and Exceptions
 For this lab, we create classes that are templates and also create some custom exceptions for our classes. Data structure implemented is a simple stack.
+
+### Homework 1: Files
+In this assignment, we practiced with reading data from files, and then displaying said data, and storing some new data in a new file.

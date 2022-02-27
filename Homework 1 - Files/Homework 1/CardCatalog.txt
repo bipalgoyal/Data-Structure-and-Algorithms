@@ -1,0 +1,12 @@
+Title: Moby Dick
+Full Author: Herman Melville
+Author First Name: Herman
+Author Last Name: Melville
+Word Count: 202
+Line Count: 18
+Title: Peter Pan
+Full Author: James Barrie
+Author First Name: James
+Author Last Name: Barrie
+Word Count: 3052
+Line Count: 258
