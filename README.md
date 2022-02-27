@@ -9,3 +9,6 @@ In this lab, we create a console based basketball game, and implement it by defi
 
 ### Lab 3: Classes and Operator Overloading
 We create a class for complex numbers and overload some operators for performing arithmetic operations on complex numbers.
+
+### Lab 4: Inheritance, Polymorphism, and Abstract classes
+In this lab, we practice the concepts by creating base and derived classes, and test them in a main program.
