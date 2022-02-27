@@ -18,3 +18,6 @@ For this lab, we create classes that are templates and also create some custom e
 
 ### Homework 1: Files
 In this assignment, we practiced with reading data from files, and then displaying said data, and storing some new data in a new file.
+
+### Homework 2: Classes
+In this assignment, we created a console based roulette game, using multiple classes.
