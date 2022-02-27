@@ -7,13 +7,13 @@ int main()
 {
 	try {
 		string wordFromFile;
-		string fileName = "test.txt";
+		string fileName;
 		ifstream readFromFile;
 		
 		//Open your file
 		do {
-			/*cout << "Enter name of file to be processed: ";
-			cin >> fileName;*/
+			cout << "Enter name of file to be processed: ";
+			cin >> fileName;
 			readFromFile.open(fileName);
 			if (!readFromFile.is_open())
 			{
