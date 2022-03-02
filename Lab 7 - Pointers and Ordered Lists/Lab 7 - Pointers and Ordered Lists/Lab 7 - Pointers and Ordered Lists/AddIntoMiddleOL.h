@@ -4,24 +4,30 @@
 #include "OrderedList.h"
 
 template<class T>
-class AddIntoMiddleOl : public OrderedList<T> {
+class AddIntoMiddleOL : public OrderedList<T> {
 public: 
 	void AddItem(T val) {
 		int* item = new int(val);
 		int index = 12;
 
-		while ((*item[index] < *item || item[index] == nullptr) && index != 0)
+		while ((*this->items[index] > *item || this->items[index] == nullptr) && index != 0)
 		{
 			index--;
 		}
-		if (item[index + 1] != nullptr)
+		while ((*this->items[index] < *item && this->items[index + 1] != nullptr) && index < this->length)
 		{
-			for (int i = index; i < 25; i++)
+			index++;
+		}
+		if (this->items[index + 1] != nullptr)
+		{
+			for (int i = this->length - 1; i >= index + 1; i--)
 			{
-				int* tempVal = *item[i + 1];
-				item[]
+				this->items[i + 1] = this->items[i];
 			}
 		}
+
+		this->items[index] = item;
+		this->length++;
 	}
 };
 

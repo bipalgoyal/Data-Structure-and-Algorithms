@@ -1,9 +1,10 @@
 #include "OrderedList.h"
+#include "AddIntoMiddleOL.h"
 #include <iostream>
 using namespace std;
 
 int main() {
-	OrderedList<int> list;
+	AddIntoMiddleOL<int> list;
 	list.AddItem(3);
 	list.AddItem(4);
 	list.AddItem(5);
@@ -12,9 +13,11 @@ int main() {
 	list.AddItem(2);
 	list.AddItem(3);
 	list.AddItem(8);
-	cout << list.RemoveItem(1) <<endl;
-	cout << list.RemoveItem(8) <<endl;
-	cout << list.RemoveItem(2) <<endl;
-	cout << list.RemoveItem(1) <<endl;
+	list.AddItem(10);
+	list.AddItem(6);
+	list.AddItem(25);
+	list.AddItem(14);
+	list.AddItem(7);
+	list.AddItem(45);
 	return 0;
 }
