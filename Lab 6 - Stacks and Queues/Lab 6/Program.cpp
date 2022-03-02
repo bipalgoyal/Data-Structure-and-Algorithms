@@ -21,6 +21,8 @@ int main()
 			}
 		} while (!readFromFile.is_open());
 		
+		cout << endl << endl;
+
 		//Get number of words from file (used to initialize size of queue)
 		int count = 0;
 		while (readFromFile >> wordFromFile)
@@ -57,6 +59,7 @@ int main()
 			}
 			cout << ' ';
 		}
+		cout << endl << endl;
 	}
 	catch (Stack<int>::EmptyStackException) {
 		cout << "Empty Stack";

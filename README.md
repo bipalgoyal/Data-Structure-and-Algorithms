@@ -16,8 +16,12 @@ In this lab, we practice the concepts by creating base and derived classes, and 
 ### Lab 5: Templates and Exceptions
 For this lab, we create classes that are templates and also create some custom exceptions for our classes. Data structure implemented is a simple stack.
 
+### Lab 6: Stacks and Queues
+In this assignment, we created two data structures, stack and queue and implemented those data structures to implement a solution for a problem. Now, it is very true that we don’t have to create these data structures ourselves outside this class. However, it is very important as programmers to learn how these data structures actually work, and creating a simple implementation of the same structure helps a lot in achieving that goal. So, I believe that it is very important and helpful for CS programmers such as ourselves
+
 ### Homework 1: Files
 In this assignment, we practiced with reading data from files, and then displaying said data, and storing some new data in a new file.
 
 ### Homework 2: Classes
 In this assignment, we created a console based roulette game, using multiple classes.
+
