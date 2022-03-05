@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AddIntoMiddleOL.h" />
+    <ClInclude Include="DerivedSecond.h" />
     <ClInclude Include="OrderedList.h" />
   </ItemGroup>
   <ItemGroup>

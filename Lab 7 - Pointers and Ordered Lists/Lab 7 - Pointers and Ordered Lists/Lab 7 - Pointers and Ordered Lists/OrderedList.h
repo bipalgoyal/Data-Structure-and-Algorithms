@@ -4,10 +4,11 @@
 
 const int size = 25;
 
+//ascending order list
 template<class T>
 class OrderedList
 {
-protected:
+public:
 	T *items[size];
 	int length;
 public:
@@ -24,6 +25,11 @@ public:
 	};
 	~OrderedList()
 	{
+		for (int i = 0; i < size; i++) {
+			if (items[i] != nullptr) {
+				delete items[i];
+			}
+		}
 	};
 
 	void AddItem(T val)
@@ -31,7 +37,7 @@ public:
 		if (IsFull()) {
 			throw FullOrderedListException();
 		}
-		int *item = new int(val);
+		T *item = new T(val);
 		if (Length() == 0) {
 			items[0] = item;
 			length++;
