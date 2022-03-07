@@ -18,6 +18,7 @@ public:
 		}
 		int pos = 0;
 		while (pos < size) {
+			this->removeEfficiency++;
 			if (this->items[pos] != nullptr && *this->items[pos] == val) 
 				break;
 			pos++;
@@ -36,57 +37,88 @@ public:
 		if (this->IsFull()) {
 			throw FullOrderedListException();
 		}
+		if (this->Length() == 0) 
+		{
+			this->addEfficiency++;
+			this->items[0] = new T(val);
+			this->length++;
+			return;
+		}
+		if (this->Length() == 1)
+		{
+			this->addEfficiency++;
+			if (*this->items[0] > val) {
+				this->items[1] = this->items[0];
+				this->items[0] = new T(val);
+			}
+			else {
+				this->items[1] = new T(val);
+			}
+			this->length++;
+			return;
+		}
 		int pos = 0, countValidVal = 0;
 		while (pos < size) {
+			this->addEfficiency++;
 			T nextVal;
 			int blankspots = 0;
 			while (pos < size && this->items[pos] == nullptr) {
+				this->addEfficiency++;
 				pos++;
 				blankspots++;
 			}
 			countValidVal++;
-			nextVal = *this->items[pos];
-			if (nextVal > val) {
-				//no blankspots
-				if (blankspots == 0) {
-					//move items until you find a blank spot
-					int moveAhead = 1, moveBack = 1;
-					bool useAhead;
-					//find blank spot
-					while (true) {
-						if ((pos - moveBack >= 0) && this->items[pos - moveBack] == nullptr) {
-							useAhead = false;
-							break;
+			if (pos != size) {
+				nextVal = *this->items[pos];
+				if (nextVal > val) {
+					//no blankspots
+					if (blankspots == 0) {
+						//move items until you find a blank spot
+						int moveAhead = 1, moveBack = 1;
+						bool useAhead;
+						//find blank spot
+						while (true) {
+							this->addEfficiency++;
+							if ((pos - moveBack >= 0) && this->items[pos - moveBack] == nullptr) {
+								useAhead = false;
+								break;
+							}
+							if ((pos + moveAhead < size) && this->items[pos + moveAhead] == nullptr) {
+								useAhead = true;
+								break;
+							}
+							moveAhead++;
+							moveBack++;
 						}
-						if ((pos + moveAhead < size) && this->items[pos + moveAhead] == nullptr) {
-							useAhead = true;
-							break;
+						if (useAhead) {
+							//shift items ahead
+							for (int i = pos + moveAhead; i > pos;i--) {
+								this->addEfficiency++;
+								this->items[i] = this->items[i - 1];
+							}
+							this->items[pos] = new T(val);
 						}
-						moveAhead++;
-						moveBack++;
+						else {
+							//shift items behind
+							for (int i = pos - moveBack; i < pos; i++) {
+								this->addEfficiency++;
+								this->items[i] = this->items[i + 1];
+							}
+							this->items[pos - 1] = new T(val);
+						}
 					}
-					if (useAhead) {
-						//shift items ahead
-						for (int i = pos + moveAhead; i > pos;i--) {
-							this->items[i] = this->items[i - 1];
-						}
-						this->items[pos] = new T(val);
-					}
+					//there are blank spots
 					else {
-						//shift items behind
-						for (int i = pos - moveBack; i < pos; i++) {
-							this->items[i] = this->items[i + 1];
-						}
-						this->items[pos-1] = new T(val);
+						int shift = (blankspots % 2 == 0) ? blankspots / 2 : blankspots / 2 + 1;
+						this->items[pos - shift] = new T(val);
 					}
+					this->length++;
+					break;
 				}
-				//there are blank spots
-				else {
-					int shift = (blankspots % 2 == 0) ? blankspots / 2 : blankspots / 2 + 1;
-					this->items[pos - shift] = new T(val);
-				}
+			}
+			else {
+				this->items[pos - blankspots] = new T(val);
 				this->length++;
-				break;
 			}
 			pos++;
 		}

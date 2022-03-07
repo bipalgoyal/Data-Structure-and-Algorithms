@@ -5,23 +5,29 @@
 
 template<class T>
 class AddIntoMiddleOL : public OrderedList<T> {
-public: 
+public:
+	class FullOrderedListException {};
 	void AddItem(T val) {
+		if (this->IsFull()) {
+			throw FullOrderedListException();
+		}
 		int* item = new int(val);
-		int index = 12;
-
-		while ((*this->items[index] > *item || this->items[index] == nullptr) && index != 0)
+		int index = 25;
+		while (index != 0 && (this->items[index - 1] == nullptr || *this->items[index - 1] > *item))
 		{
+			this->addEfficiency++;
 			index--;
 		}
-		while ((*this->items[index] < *item && this->items[index + 1] != nullptr) && index < this->length)
+		while (index < this->length && (this->items[index] != nullptr && *this->items[index] < *item))
 		{
+			this->addEfficiency++;
 			index++;
 		}
-		if (this->items[index + 1] != nullptr)
+		if (this->items[index] != nullptr)
 		{
-			for (int i = this->length - 1; i >= index + 1; i--)
+			for (int i = this->length - 1; i >= index; i--)
 			{
+				this->addEfficiency++;
 				this->items[i + 1] = this->items[i];
 			}
 		}
