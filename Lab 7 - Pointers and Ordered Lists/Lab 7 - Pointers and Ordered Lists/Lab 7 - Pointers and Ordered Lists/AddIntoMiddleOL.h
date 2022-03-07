@@ -12,7 +12,7 @@ public:
 			throw FullOrderedListException();
 		}
 		int* item = new int(val);
-		int index = 25;
+		int index = size/2;
 		while (index != 0 && (this->items[index - 1] == nullptr || *this->items[index - 1] > *item))
 		{
 			this->addEfficiency++;
