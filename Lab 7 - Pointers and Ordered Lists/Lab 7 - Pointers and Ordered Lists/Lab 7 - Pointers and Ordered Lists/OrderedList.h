@@ -110,6 +110,36 @@ public:
 	int getRemoveEfficiency() {
 		return this->removeEfficiency;
 	}
+
+	bool operator ==(OrderedList<T> list) 
+	{
+		if (this->length == list.Length()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	bool operator >(OrderedList<T> list)
+	{
+		if (this->length > list.Length()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	bool operator <(OrderedList<T> list)
+	{
+		if (this->length < list.Length()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 };
 #endif
 
